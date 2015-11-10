@@ -48,8 +48,9 @@ class AnswerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Back button is disabled so make sure you cannot cheat 
         self.navigationItem.setHidesBackButton(true, animated: true)
-        self.solution.text = "Answer: \(self.quiz.questions[questionIndex].answer)"
+        self.solution.text = "Correct Answer: \(self.quiz.questions[questionIndex].answer)"
         self.questionLabel.text = "Question: \(self.quiz.questions[questionIndex].question)"
         if !isCorrect {
             checkAnswerLabel.text = "Incorrect"

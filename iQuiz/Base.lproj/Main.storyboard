@@ -85,7 +85,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Quiz Title" id="mOI-FS-AaM">
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Next" id="I3D-hM-uhs">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Submit" id="I3D-hM-uhs">
                             <connections>
                                 <segue destination="a1p-61-dY0" kind="showDetail" id="3ea-4A-QbJ"/>
                             </connections>
@@ -199,7 +199,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100% Correct " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O4c-Cn-jBg">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100% Correct " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O4c-Cn-jBg">
                                 <rect key="frame" x="246" y="144" width="108" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>

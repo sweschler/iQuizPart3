@@ -35,17 +35,17 @@ class MasterViewController: UITableViewController {
             
         let quizMath = Quiz(title: "Math", description: "Come learn some math tricks!", questions: [question1, question2, question3, question4])
         
-        question1 = Question(question: "What is the first element on the periodic table?", answer: "Hydrogen", answers: ["Oxygen", "Hydrogen", "Mercury" , "Argon"])
+        question1 = Question(question: "Which of the following elements is a metal?", answer: "Ga", answers: ["S", "Se", "He" , "Ga"])
         question2 = Question(question: "K is the chemical symbol for which element?", answer: "Potassium", answers: ["Hydrogen", "Nitrogen","Carbon","Potassium"])
-        question3 = Question(question: "Two identical cars collide head on. Each car is traveling at 100 km/h. The impact force on each car is the same as hitting a solid wall at:", answer: "100 km/h", answers: ["100 km/h", "200 km/h", "150 km/h", "50 km/h"])
-        question4 = Question(question: "Plants receive their nutrients mainly from", answer: "soil", answers: ["chlorophyll", "light", "soil", "atmosphere"])
+        question3 = Question(question: "Pollination by birds is called:", answer: "ornithophily", answers: ["autogamy", "ornithophily", "entomophily", "anemophily"])
+        question4 = Question(question: "Plants receive their nutrients mainly from:", answer: "soil", answers: ["chlorophyll", "light", "soil", "atmosphere"])
         
         let quizScience = Quiz(title: "Science", description: "Learn cool facts about chemistry, physics and biology!", questions: [question1, question2, question3, question4])
         
-        question1 = Question(question: "Which super hero team does Johnny Storm belong to?", answer: "The Fantastic 4", answers: ["Ultimate Avengers", "The X-Men", "The Fantastic 4" , "The Justice League"])
+        question1 = Question(question: "Which team does Johnny Storm belong to?", answer: "The Fantastic 4", answers: ["Ultimate Avengers", "The X-Men", "The Fantastic 4" , "The Justice League"])
         question2 = Question(question: "Which of the following hero is from marvel?", answer: "Spider-man", answers: ["The Flash", "Hancock","Sider-man","Superman"])
         question3 = Question(question: "What is Anothony Stark's super hero name?", answer: "Iron Man", answers: ["Spider Man", "Iron Man", "Deadpool", "Pheonix"])
-        question4 = Question(question: "How many superheroes are in the Fantastic 4?", answer: "4", answers: ["4", "2", "44", "14"])
+        question4 = Question(question: "How many heroes are in the Fantastic 4?", answer: "4", answers: ["4", "2", "44", "14"])
         
         let quizMarvelSuperHeroes = Quiz(title: "Marvel Super Heroes", description: "How well do you know your favorite marvel super heroes?", questions: [question1, question2, question3, question4])
         

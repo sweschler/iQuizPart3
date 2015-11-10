@@ -21,42 +21,14 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     
     //TODO: Change this to make it work without setting a random object Quiz
     var quiz: Quiz = Quiz(title: "", description: "", questions: [])
-    //{
-//        didSet {
-//            // Update the view.
-//            self.configureView()
-//        }
-//    }
-//
-//    func configureView() {
-//        // Update the user interface for the detail item.
-//        if let quiz = self.quiz{
-//            if let label = self.detailDescriptionLabel {
-//                label.text = quiz.description
-//            }
-//        }
-//    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.detailDescriptionLabel.text = self.quiz.description
-//        self.tableView.rowHeight = UITableViewAutomaticDimension
-//        self.tableView.estimatedRowHeight = 10000
-        // Do any additional setup after loading the view, typically from a nib.
-//        self.configureView()
     }
-    
-    //TODO: Make all the question show up
-//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        return UITableViewAutomaticDimension
-//    }
-//    
-//    func tableView(tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-//        return UITableViewAutomaticDimension
-//    }
-    
         
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -78,6 +50,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         label.textAlignment = .Center
         label.lineBreakMode = .ByWordWrapping
         label.numberOfLines = 0
+
         return headerCell
     }
     

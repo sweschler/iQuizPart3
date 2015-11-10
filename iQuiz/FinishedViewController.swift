@@ -25,7 +25,7 @@ class FinishedViewController: UIViewController {
         if totalPercent < 0.5 {
             correctnessLabel.text = "You could do better!"
         } else if totalPercent == 0.5 {
-            correctnessLabel.text = "You got half of them right! Almost there, try again!"
+            correctnessLabel.text = "You got half of them right! Try Again!"
         } else if totalPercent > 0.5 {
             correctnessLabel.text = "Great job! Keep up the good work!"
         }
