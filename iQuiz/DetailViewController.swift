@@ -76,6 +76,8 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         label.text = quiz.questions[questionIndex].question
         label.font = UIFont.boldSystemFontOfSize(16.0)
         label.textAlignment = .Center
+        label.lineBreakMode = .ByWordWrapping
+        label.numberOfLines = 0
         return headerCell
     }
     

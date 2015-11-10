@@ -32,7 +32,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Quiz Description" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="0XM-y9-sOw">
+                            <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Quiz Description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="0XM-y9-sOw">
                                 <rect key="frame" x="20" y="72" width="560" height="17"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" size="system"/>
@@ -126,8 +126,8 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAl-UO-HG3">
-                                <rect key="frame" x="266" y="130" width="69" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAl-UO-HG3">
+                                <rect key="frame" x="0.0" y="108" width="600" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -137,22 +137,27 @@
                         <constraints>
                             <constraint firstItem="LQB-HZ-wXa" firstAttribute="centerX" secondItem="QHf-SE-0js" secondAttribute="centerX" id="1Hz-PS-l9N"/>
                             <constraint firstAttribute="trailingMargin" secondItem="RAl-UO-HG3" secondAttribute="trailing" constant="245" id="3ed-p6-ACA"/>
+                            <constraint firstItem="RAl-UO-HG3" firstAttribute="leading" secondItem="QHf-SE-0js" secondAttribute="leading" id="7FF-mm-ucv"/>
                             <constraint firstItem="gXs-hb-frB" firstAttribute="centerX" secondItem="QHf-SE-0js" secondAttribute="centerX" id="Bas-rV-Xmj"/>
                             <constraint firstItem="LQB-HZ-wXa" firstAttribute="leading" secondItem="QHf-SE-0js" secondAttribute="leadingMargin" id="JhZ-Wz-IHy"/>
                             <constraint firstItem="gXs-hb-frB" firstAttribute="top" secondItem="1d9-XE-oLJ" secondAttribute="bottom" constant="139" id="Mai-yq-PxN"/>
+                            <constraint firstAttribute="trailing" secondItem="RAl-UO-HG3" secondAttribute="trailing" id="Mbf-3o-epZ"/>
                             <constraint firstItem="RAl-UO-HG3" firstAttribute="top" secondItem="1d9-XE-oLJ" secondAttribute="bottom" constant="26" id="QVE-dK-9NY"/>
                             <constraint firstItem="RAl-UO-HG3" firstAttribute="centerX" secondItem="QHf-SE-0js" secondAttribute="centerX" id="TbE-CI-AbG"/>
                             <constraint firstItem="LQB-HZ-wXa" firstAttribute="top" secondItem="gXs-hb-frB" secondAttribute="bottom" constant="50" id="TqW-Ul-UpN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="LQB-HZ-wXa" secondAttribute="trailing" id="fun-D1-3dy"/>
                             <constraint firstItem="RAl-UO-HG3" firstAttribute="centerX" secondItem="QHf-SE-0js" secondAttribute="centerX" id="iMY-ZT-YHe"/>
+                            <constraint firstItem="RAl-UO-HG3" firstAttribute="top" secondItem="1d9-XE-oLJ" secondAttribute="bottom" constant="44" id="ix6-9s-jbS"/>
                             <constraint firstItem="RAl-UO-HG3" firstAttribute="top" secondItem="1d9-XE-oLJ" secondAttribute="bottom" constant="66" id="lZn-vR-X2j"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="1Hz-PS-l9N"/>
                                 <exclude reference="3ed-p6-ACA"/>
                                 <exclude reference="QVE-dK-9NY"/>
                                 <exclude reference="TbE-CI-AbG"/>
+                                <exclude reference="iMY-ZT-YHe"/>
+                                <exclude reference="lZn-vR-X2j"/>
+                                <exclude reference="1Hz-PS-l9N"/>
                             </mask>
                         </variation>
                     </view>
@@ -212,7 +217,7 @@
                     <navigationItem key="navigationItem" title="Quiz Completed" id="KiU-tp-r4w">
                         <barButtonItem key="rightBarButtonItem" title="Finish" id="dcP-Um-7Tg">
                             <connections>
-                                <segue destination="7bK-jq-Zjz" kind="showDetail" id="i5r-Lw-qvk"/>
+                                <segue destination="7bK-jq-Zjz" kind="show" id="i5r-Lw-qvk"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -249,7 +254,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="Arm-wq-HPj" detailTextLabel="aIL-Zc-9KT" imageView="2IG-5P-3xM" style="IBUITableViewCellStyleSubtitle" id="WCw-Qf-5nD">
-                                <rect key="frame" x="0.0" y="22" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCw-Qf-5nD" id="37f-cq-3Eg">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>

@@ -45,7 +45,7 @@ class MasterViewController: UITableViewController {
         question1 = Question(question: "Which super hero team does Johnny Storm belong to?", answer: "The Fantastic 4", answers: ["Ultimate Avengers", "The X-Men", "The Fantastic 4" , "The Justice League"])
         question2 = Question(question: "Which of the following hero is from marvel?", answer: "Spider-man", answers: ["The Flash", "Hancock","Sider-man","Superman"])
         question3 = Question(question: "What is Anothony Stark's super hero name?", answer: "Iron Man", answers: ["Spider Man", "Iron Man", "Deadpool", "Pheonix"])
-        question4 = Question(question: "", answer: "", answers: [""])
+        question4 = Question(question: "How many superheroes are in the Fantastic 4?", answer: "4", answers: ["4", "2", "44", "14"])
         
         let quizMarvelSuperHeroes = Quiz(title: "Marvel Super Heroes", description: "How well do you know your favorite marvel super heroes?", questions: [question1, question2, question3, question4])
         
