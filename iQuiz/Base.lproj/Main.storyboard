@@ -84,7 +84,7 @@
                         </variation>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Quiz Title" id="mOI-FS-AaM">
+                    <navigationItem key="navigationItem" title="Quiz" id="mOI-FS-AaM">
                         <barButtonItem key="rightBarButtonItem" enabled="NO" title="Submit" id="I3D-hM-uhs">
                             <connections>
                                 <segue destination="a1p-61-dY0" kind="showDetail" id="3ea-4A-QbJ"/>
@@ -354,7 +354,7 @@
         <image name="happyToast" width="1200" height="1200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7Zu-qh-PEp"/>
+        <segue reference="6S0-TO-JiA"/>
         <segue reference="i5r-Lw-qvk"/>
     </inferredMetricsTieBreakers>
 </document>

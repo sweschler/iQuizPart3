@@ -20,7 +20,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     var total = 0
     
     //TODO: Change this to make it work without setting a random object Quiz
-    var quiz: Quiz = Quiz(title: "", description: "", questions: [])
+    lazy var quiz: Quiz = Quiz()
 
 
     override func viewDidLoad() {

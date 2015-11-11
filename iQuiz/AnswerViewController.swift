@@ -12,7 +12,7 @@ import UIKit
 class AnswerViewController: UIViewController {
     
     var isCorrect = false
-    var quiz: Quiz = Quiz(title: "", description: "", questions: [])
+    lazy var quiz: Quiz = Quiz()
     var score = 0
     var total = 0
     var questionIndex = 0

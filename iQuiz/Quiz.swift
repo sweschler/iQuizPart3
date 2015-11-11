@@ -19,5 +19,9 @@ class Quiz {
         self.description = description
         self.questions = questions
     }
+    
+    convenience init() {
+        self.init(title: "", description: "", questions:[])
+    }
 }
 
