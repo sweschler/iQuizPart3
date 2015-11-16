@@ -27,7 +27,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.detailDescriptionLabel.text = self.quiz.description
+        self.detailDescriptionLabel.text = self.quiz.desc
     }
     
     func home(sender: AnyObject) {
@@ -103,7 +103,7 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         if !(segue.identifier == "HomeSegue") {
             let controller = (segue.destinationViewController as! UINavigationController).topViewController as! AnswerViewController
             let question = self.quiz.questions[questionIndex]
-            controller.isCorrect = (question.answers[selectedIndex] == question.answer)
+            controller.isCorrect = (selectedIndex == Int(question.answer)! - 1)
             controller.questionIndex = self.questionIndex
             controller.quiz = self.quiz
             controller.score = self.score

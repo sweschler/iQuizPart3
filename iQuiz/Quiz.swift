@@ -7,21 +7,23 @@
 //
 
 import Foundation
+import RealmSwift
 
-class Quiz {
-    var title: String = ""
-    var description: String = ""
-    var questions: [Question]
+class Quiz : Object {
+    dynamic var title: String = ""
+    dynamic var desc: String = ""
+    dynamic var questions: [Question]
     
 
-    init(title: String, description: String, questions: [Question]) {
+    init(title: String, desc: String, questions: [Question]) {
         self.title = title
-        self.description = description
+        self.desc = desc
         self.questions = questions
+        super.init()
     }
     
-    convenience init() {
-        self.init(title: "", description: "", questions:[])
+    convenience required init() {
+        self.init(title: "", desc: "", questions:[])
     }
 }
 
