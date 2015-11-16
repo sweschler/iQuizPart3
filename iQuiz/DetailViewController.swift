@@ -29,7 +29,11 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
         self.tableView.dataSource = self
         self.detailDescriptionLabel.text = self.quiz.description
     }
-        
+    
+    func home(sender: AnyObject) {
+        self.performSegueWithIdentifier("HomeSegue", sender: self)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -96,13 +100,15 @@ class DetailViewController: UIViewController, UITableViewDataSource, UITableView
     // MARK: - Segues
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let controller = (segue.destinationViewController as! UINavigationController).topViewController as! AnswerViewController
-        let question = self.quiz.questions[questionIndex]
-        controller.isCorrect = (question.answers[selectedIndex] == question.answer)
-        controller.questionIndex = self.questionIndex
-        controller.quiz = self.quiz
-        controller.score = self.score
-        controller.total = self.total
+        if !(segue.identifier == "HomeSegue") {
+            let controller = (segue.destinationViewController as! UINavigationController).topViewController as! AnswerViewController
+            let question = self.quiz.questions[questionIndex]
+            controller.isCorrect = (question.answers[selectedIndex] == question.answer)
+            controller.questionIndex = self.questionIndex
+            controller.quiz = self.quiz
+            controller.score = self.score
+            controller.total = self.total
+        }
     }
 
 }

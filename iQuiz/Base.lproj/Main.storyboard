@@ -87,7 +87,7 @@
                     <navigationItem key="navigationItem" title="Quiz" id="mOI-FS-AaM">
                         <barButtonItem key="rightBarButtonItem" enabled="NO" title="Submit" id="I3D-hM-uhs">
                             <connections>
-                                <segue destination="a1p-61-dY0" kind="showDetail" id="3ea-4A-QbJ"/>
+                                <segue destination="a1p-61-dY0" kind="showDetail" identifier="AnswerSegue" id="3ea-4A-QbJ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -96,6 +96,7 @@
                         <outlet property="detailDescriptionLabel" destination="0XM-y9-sOw" id="deQ-Na-JPF"/>
                         <outlet property="next" destination="I3D-hM-uhs" id="NBx-vD-cmR"/>
                         <outlet property="tableView" destination="LNt-XD-uHA" id="yBj-cc-VGU"/>
+                        <segue destination="7bK-jq-Zjz" kind="show" identifier="HomeSegue" id="1b8-Tj-HOB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
@@ -354,7 +355,7 @@
         <image name="happyToast" width="1200" height="1200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6S0-TO-JiA"/>
-        <segue reference="i5r-Lw-qvk"/>
+        <segue reference="7Zu-qh-PEp"/>
+        <segue reference="1b8-Tj-HOB"/>
     </inferredMetricsTieBreakers>
 </document>

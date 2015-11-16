@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class MasterViewController: UITableViewController {
 
@@ -20,6 +22,35 @@ class MasterViewController: UITableViewController {
         tableView.tableFooterView = UIView()
         // Do any additional setup after loading the view, typically from a nib.
         
+        Alamofire.request(.GET, "https://tednewardsandbox.site44.com/questions.json").responseJSON() {response in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    print("JSON: \(json)")
+                    let data = json.array
+                    for quizData in data! {
+                        let quiz = Quiz()
+                        quiz.title = quizData["title"].stringValue
+                        quiz.description = quizData["desc"].stringValue
+                        for questionData in quizData["questions"].array! {
+                            let question = Question(question: questionData["text"].stringValue, answer: questionData["answer"].stringValue, answers: [])
+                            for answerData in questionData["answers"].array! {
+                                question.answers.append(answerData.stringValue)
+                            }
+                            quiz.questions.append(question)
+                        }
+                        self.quizzes.append(quiz)
+                        //print(self.quizzes.count)
+                    }
+                }
+            case .Failure(let error):
+                print(error)
+            }
+            
+            self.tableView.reloadData()
+        }
+        
         let settings = UIBarButtonItem(title: "Settings", style: .Plain, target: self, action: "didPressSettings:")
         self.navigationItem.rightBarButtonItem = settings
         if let split = self.splitViewController {
@@ -28,29 +59,29 @@ class MasterViewController: UITableViewController {
             
         }
         
-        var question1 = Question(question: "10 + 20", answer: "30", answers: ["1", "20", "30" , "4"])
-        var question2 = Question(question: "20 - 5", answer: "15", answers: ["15", "10", "11" ,"5"])
-        var question3 = Question(question: "15 * 2", answer: "30", answers: ["15", "30", "10", "1"])
-        var question4 = Question(question: "100 / 2", answer: "50", answers: ["50", "5", "20", "15"])
-            
-        let quizMath = Quiz(title: "Math", description: "Come learn some math tricks!", questions: [question1, question2, question3, question4])
+//        var question1 = Question(question: "10 + 20", answer: "30", answers: ["1", "20", "30" , "4"])
+//        var question2 = Question(question: "20 - 5", answer: "15", answers: ["15", "10", "11" ,"5"])
+//        var question3 = Question(question: "15 * 2", answer: "30", answers: ["15", "30", "10", "1"])
+//        var question4 = Question(question: "100 / 2", answer: "50", answers: ["50", "5", "20", "15"])
+//            
+//        let quizMath = Quiz(title: "Math", description: "Come learn some math tricks!", questions: [question1, question2, question3, question4])
+//        
+//        question1 = Question(question: "Which of the following elements is a metal?", answer: "Ga", answers: ["S", "Se", "He" , "Ga"])
+//        question2 = Question(question: "K is the chemical symbol for which element?", answer: "Potassium", answers: ["Hydrogen", "Nitrogen","Carbon","Potassium"])
+//        question3 = Question(question: "Pollination by birds is called:", answer: "ornithophily", answers: ["autogamy", "ornithophily", "entomophily", "anemophily"])
+//        question4 = Question(question: "Plants receive their nutrients mainly from:", answer: "soil", answers: ["chlorophyll", "light", "soil", "atmosphere"])
+//        
+//        let quizScience = Quiz(title: "Science", description: "Learn cool facts about chemistry, physics and biology!", questions: [question1, question2, question3, question4])
+//        
+//        question1 = Question(question: "Which team does Johnny Storm belong to?", answer: "The Fantastic 4", answers: ["Ultimate Avengers", "The X-Men", "The Fantastic 4" , "The Justice League"])
+//        question2 = Question(question: "Which of the following hero is from marvel?", answer: "Spider-man", answers: ["The Flash", "Hancock","Sider-man","Superman"])
+//        question3 = Question(question: "What is Anothony Stark's super hero name?", answer: "Iron Man", answers: ["Spider Man", "Iron Man", "Deadpool", "Pheonix"])
+//        question4 = Question(question: "How many heroes are in the Fantastic 4?", answer: "4", answers: ["4", "2", "44", "14"])
+//        
+//        let quizMarvelSuperHeroes = Quiz(title: "Marvel Super Heroes", description: "How well do you know your favorite marvel super heroes?", questions: [question1, question2, question3, question4])
         
-        question1 = Question(question: "Which of the following elements is a metal?", answer: "Ga", answers: ["S", "Se", "He" , "Ga"])
-        question2 = Question(question: "K is the chemical symbol for which element?", answer: "Potassium", answers: ["Hydrogen", "Nitrogen","Carbon","Potassium"])
-        question3 = Question(question: "Pollination by birds is called:", answer: "ornithophily", answers: ["autogamy", "ornithophily", "entomophily", "anemophily"])
-        question4 = Question(question: "Plants receive their nutrients mainly from:", answer: "soil", answers: ["chlorophyll", "light", "soil", "atmosphere"])
         
-        let quizScience = Quiz(title: "Science", description: "Learn cool facts about chemistry, physics and biology!", questions: [question1, question2, question3, question4])
-        
-        question1 = Question(question: "Which team does Johnny Storm belong to?", answer: "The Fantastic 4", answers: ["Ultimate Avengers", "The X-Men", "The Fantastic 4" , "The Justice League"])
-        question2 = Question(question: "Which of the following hero is from marvel?", answer: "Spider-man", answers: ["The Flash", "Hancock","Sider-man","Superman"])
-        question3 = Question(question: "What is Anothony Stark's super hero name?", answer: "Iron Man", answers: ["Spider Man", "Iron Man", "Deadpool", "Pheonix"])
-        question4 = Question(question: "How many heroes are in the Fantastic 4?", answer: "4", answers: ["4", "2", "44", "14"])
-        
-        let quizMarvelSuperHeroes = Quiz(title: "Marvel Super Heroes", description: "How well do you know your favorite marvel super heroes?", questions: [question1, question2, question3, question4])
-        
-        
-        self.quizzes = [quizMath, quizScience, quizMarvelSuperHeroes]
+//        self.quizzes = [quizMath, quizScience, quizMarvelSuperHeroes]
         
     }
     
@@ -92,6 +123,7 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //print(quizzes.count)
         return quizzes.count
     }
 
