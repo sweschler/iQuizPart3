@@ -6,8 +6,16 @@
 //  Copyright © 2015 Sabrina Weschler. All rights reserved.
 //
 
-import Cocoa
+import UIKit
 
 class SettingsViewController: UIViewController {
-
+    
+    @IBOutlet weak var urlInputField: UITextField!
+    @IBAction func retrieveDataButton(sender: AnyObject) {
+        self.resignFirstResponder()
+        let view = MasterViewController()
+        view.fetchData(self.urlInputField.text!)
+        
+        
+    }
 }

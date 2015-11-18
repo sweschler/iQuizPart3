@@ -13,6 +13,7 @@
 		850E8FFA1BE44804003C566F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 850E8FF81BE44804003C566F /* Main.storyboard */; };
 		850E8FFC1BE44804003C566F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 850E8FFB1BE44804003C566F /* Assets.xcassets */; };
 		850E8FFF1BE44804003C566F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 850E8FFD1BE44804003C566F /* LaunchScreen.storyboard */; };
+		854396DC1BFC4AB800D69A7F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854396DB1BFC4AB800D69A7F /* SettingsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		854E24F01BED503F004181C4 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854E24EF1BED503F004181C4 /* Quiz.swift */; settings = {ASSET_TAGS = (); }; };
 		854E24F21BED5308004181C4 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854E24F11BED5308004181C4 /* Question.swift */; settings = {ASSET_TAGS = (); }; };
 		854E24F41BF02547004181C4 /* AnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854E24F31BF02547004181C4 /* AnswerViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -31,6 +32,7 @@
 		850E8FFB1BE44804003C566F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		850E8FFE1BE44804003C566F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		850E90001BE44804003C566F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		854396DB1BFC4AB800D69A7F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		854E24EF1BED503F004181C4 /* Quiz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
 		854E24F11BED5308004181C4 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		854E24F31BF02547004181C4 /* AnswerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerViewController.swift; sourceTree = "<group>"; };
@@ -74,10 +76,11 @@
 				850E8FF21BE44804003C566F /* AppDelegate.swift */,
 				854E24F11BED5308004181C4 /* Question.swift */,
 				854E24EF1BED503F004181C4 /* Quiz.swift */,
+				854E24F51BF1B359004181C4 /* FinishedViewController.swift */,
 				850E8FF41BE44804003C566F /* MasterViewController.swift */,
 				850E8FF61BE44804003C566F /* DetailViewController.swift */,
 				854E24F31BF02547004181C4 /* AnswerViewController.swift */,
-				854E24F51BF1B359004181C4 /* FinishedViewController.swift */,
+				854396DB1BFC4AB800D69A7F /* SettingsViewController.swift */,
 				850E8FF81BE44804003C566F /* Main.storyboard */,
 				850E8FFB1BE44804003C566F /* Assets.xcassets */,
 				850E8FFD1BE44804003C566F /* LaunchScreen.storyboard */,
@@ -231,6 +234,7 @@
 				850E8FF51BE44804003C566F /* MasterViewController.swift in Sources */,
 				854E24F01BED503F004181C4 /* Quiz.swift in Sources */,
 				850E8FF31BE44804003C566F /* AppDelegate.swift in Sources */,
+				854396DC1BFC4AB800D69A7F /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

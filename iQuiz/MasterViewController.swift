@@ -31,22 +31,24 @@ class MasterViewController: UITableViewController {
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
         
-        fetchData()
+        fetchData("https://tednewardsandbox.site44.com/questions.json")
         
-        dispatch_async(dispatch_queue_create("background", nil)) {
-            let quizzes = self.realm.objects(Quiz) //checking to see if there is anything stored locally
-            
-            if quizzes.count > 0 {
-                
-            } else {
-                self.fetchData()
-            }
-        }
+//        dispatch_async(dispatch_queue_create("background", nil)) {
+//            let quizzes = self.realm.objects(Quiz) //checking to see if there is anything stored locally
+//            
+//            if quizzes.count > 0 {
+//                
+//            } else {
+//                self.fetchData()
+//            }
+//        }
     }
     
-    func fetchData(){
-        
-        Alamofire.request(.GET, "https://tednewardsandbox.site44.com/questions.json").responseJSON() {response in
+    @IBAction func unwindToVC(segue: UIStoryboardSegue) {
+    }
+    
+    func fetchData(url: String){
+        Alamofire.request(.GET, url).responseJSON() {response in
             switch response.result {
                 //code from SwiftyJSON github page
             case .Success:
@@ -64,12 +66,13 @@ class MasterViewController: UITableViewController {
                                 question.answers.append(answerData.stringValue)
                             }
                             quiz.questions.append(question)
+                            
                         }
                         self.quizzes.append(quiz)
-                        try! self.realm.write {
-                            self.realm.add(quiz) //writing the data to the local database created by Realm
-                        }
-                        //print(self.quizzes.count) - this is for testing purposes
+//                        try! self.realm.write {
+//                            self.realm.add(quiz) //writing the data to the local database created by Realm
+//                        }
+                        //print(self.quizzes.count) //- this is for testing purposes
                     }
                 }
             case .Failure(let error): //from Alamofire
@@ -81,9 +84,13 @@ class MasterViewController: UITableViewController {
     }
     
     func didPressSettings(sender: AnyObject) {
-        let alert = UIAlertController(title: "Settings", message: "Settings go here", preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
+        //segue to settings popover
+        self.performSegueWithIdentifier("SettingsSegue", sender: self)
+        
+        //in case I want to change it back to a alert view
+//        let alert = UIAlertController(title: "Settings", message: "Settings go here", preferredStyle: .Alert)
+//        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+//        self.presentViewController(alert, animated: true, completion: nil)
     }
 
     override func viewWillAppear(animated: Bool) {

@@ -9,17 +9,17 @@
 import Foundation
 import RealmSwift
 
-class Quiz : Object {
-    dynamic var title: String = ""
-    dynamic var desc: String = ""
-    dynamic var questions: [Question]
+class Quiz/* : Object*/ {
+    var title: String = ""
+    var desc: String = ""
+    var questions: [Question]
     
 
     init(title: String, desc: String, questions: [Question]) {
         self.title = title
         self.desc = desc
         self.questions = questions
-        super.init()
+//        super.init()
     }
     
     convenience required init() {

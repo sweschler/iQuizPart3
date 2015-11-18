@@ -5,6 +5,74 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--SettingsViewController-->
+        <scene sceneID="LJv-9f-jxf">
+            <objects>
+                <viewController title="SettingsViewController" id="1bk-Fj-m5g" customClass="SettingsViewController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dsa-he-OoJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="LMZ-NK-NNi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BOu-ZS-rgy">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Retrieve From URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ukE-Uj-qta">
+                                <rect key="frame" x="229" y="155" width="143" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kFR-X4-exz">
+                                <rect key="frame" x="254" y="317" width="93" height="30"/>
+                                <state key="normal" title="Retrieve Data"/>
+                                <connections>
+                                    <action selector="retrieveDataButton:" destination="1bk-Fj-m5g" eventType="touchUpInside" id="Dvw-do-z2i"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="https://tednewardsandbox.site44.com/questions.json" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3vX-fo-4Gh">
+                                <rect key="frame" x="114" y="232" width="372" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="87s-EN-gic">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Settings" id="WbI-Q0-9ld">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="LeZ-Hh-sGK">
+                                            <connections>
+                                                <segue destination="p5m-Z7-pwP" kind="unwind" unwindAction="unwindToVC:" id="Kkb-Si-Lae"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3vX-fo-4Gh" firstAttribute="leading" secondItem="BOu-ZS-rgy" secondAttribute="leading" constant="114" id="8q6-gK-cSe"/>
+                            <constraint firstAttribute="trailing" secondItem="3vX-fo-4Gh" secondAttribute="trailing" constant="114" id="Dfv-O1-z7f"/>
+                            <constraint firstItem="kFR-X4-exz" firstAttribute="top" secondItem="3vX-fo-4Gh" secondAttribute="bottom" constant="55" id="RKN-YQ-4yf"/>
+                            <constraint firstItem="ukE-Uj-qta" firstAttribute="centerX" secondItem="BOu-ZS-rgy" secondAttribute="centerX" id="a2o-fK-63d"/>
+                            <constraint firstItem="3vX-fo-4Gh" firstAttribute="top" secondItem="ukE-Uj-qta" secondAttribute="bottom" constant="56" id="cCo-94-YOm"/>
+                            <constraint firstItem="87s-EN-gic" firstAttribute="leading" secondItem="BOu-ZS-rgy" secondAttribute="leading" id="fhr-Uj-7Ai"/>
+                            <constraint firstItem="ukE-Uj-qta" firstAttribute="top" secondItem="dsa-he-OoJ" secondAttribute="bottom" constant="135" id="qkH-8u-Ndc"/>
+                            <constraint firstAttribute="trailing" secondItem="87s-EN-gic" secondAttribute="trailing" id="siE-yx-b4h"/>
+                            <constraint firstItem="kFR-X4-exz" firstAttribute="centerX" secondItem="BOu-ZS-rgy" secondAttribute="centerX" id="xIA-Cu-xyN"/>
+                            <constraint firstItem="87s-EN-gic" firstAttribute="top" secondItem="dsa-he-OoJ" secondAttribute="bottom" constant="8" id="xMb-4j-vgd"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="urlInputField" destination="3vX-fo-4Gh" id="bKk-va-OzT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S30-wt-Ejd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="p5m-Z7-pwP" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="694" y="-1329"/>
+        </scene>
         <!--Master-->
         <scene sceneID="pY4-Hu-kfo">
             <objects>
@@ -18,7 +86,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8fS-aE-onr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-38" y="-630"/>
+            <point key="canvasLocation" x="-50" y="-604"/>
         </scene>
         <!--Detail-->
         <scene sceneID="yUG-lL-AsK">
@@ -255,7 +323,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="Arm-wq-HPj" detailTextLabel="aIL-Zc-9KT" imageView="2IG-5P-3xM" style="IBUITableViewCellStyleSubtitle" id="WCw-Qf-5nD">
-                                <rect key="frame" x="0.0" y="86" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="22" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WCw-Qf-5nD" id="37f-cq-3Eg">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
@@ -294,6 +362,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Master" id="Zdf-7t-Un8"/>
+                    <connections>
+                        <segue destination="1bk-Fj-m5g" kind="popoverPresentation" identifier="SettingsSegue" popoverAnchorView="r7i-6Z-zg0" id="uQg-Yd-8Zc">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>
@@ -355,7 +428,7 @@
         <image name="happyToast" width="1200" height="1200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7Zu-qh-PEp"/>
+        <segue reference="6S0-TO-JiA"/>
         <segue reference="1b8-Tj-HOB"/>
     </inferredMetricsTieBreakers>
 </document>
