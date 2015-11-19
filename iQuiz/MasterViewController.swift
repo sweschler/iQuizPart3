@@ -24,7 +24,6 @@ class MasterViewController: UITableViewController {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
         // Do any additional setup after loading the view, typically from a nib.
-
         
         let settings = UIBarButtonItem(title: "Settings", style: .Plain, target: self, action: "didPressSettings:")
         self.navigationItem.rightBarButtonItem = settings
@@ -42,6 +41,14 @@ class MasterViewController: UITableViewController {
             print("LOADING DATA FROM ONLINE") // for test use only
             self.fetchData("https://tednewardsandbox.site44.com/questions.json")
         }
+        
+        self.refreshControl?.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
+    }
+    
+    func handleRefresh(refreshControl: UIRefreshControl) {
+        self.quizzes = []
+        self.fetchData("https://tednewardsandbox.site44.com/questions.json")
+        refreshControl.endRefreshing()
     }
     
     @IBAction func unwindToVC(segue: UIStoryboardSegue) {
@@ -72,7 +79,6 @@ class MasterViewController: UITableViewController {
     func parseData(data: AnyObject) {
         if let dataFromString = data.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
             let json = JSON(data: dataFromString) //cast into SwiftyJSON
-            //print("JSON: \(json)")
             let data = json.array
             for quizData in data! {
                 let quiz = Quiz()
