@@ -7,9 +7,8 @@
 //
 
 import Foundation
-import RealmSwift
 
-class Quiz/* : Object*/ {
+class Quiz {
     var title: String = ""
     var desc: String = ""
     var questions: [Question]
@@ -19,7 +18,6 @@ class Quiz/* : Object*/ {
         self.title = title
         self.desc = desc
         self.questions = questions
-//        super.init()
     }
     
     convenience required init() {

@@ -9,14 +9,16 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
-import RealmSwift
 
 class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
-    let realm : Realm = try! Realm() //initialized access to the local database
     var quizzes: [Quiz] = []
     
+    
+    struct defaultsKeys {
+        static let localStorageKey = "LocalStorageKey"
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,55 +33,62 @@ class MasterViewController: UITableViewController {
             self.detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
         
-        fetchData("https://tednewardsandbox.site44.com/questions.json")
+        let defaults = NSUserDefaults.standardUserDefaults() //gives us access to local storage 
         
-//        dispatch_async(dispatch_queue_create("background", nil)) {
-//            let quizzes = self.realm.objects(Quiz) //checking to see if there is anything stored locally
-//            
-//            if quizzes.count > 0 {
-//                
-//            } else {
-//                self.fetchData()
-//            }
-//        }
+        if let stringOne = defaults.stringForKey(defaultsKeys.localStorageKey) {
+            parseData(stringOne)
+            print("LOADING FROM LOCAL STORAGE") //for test use only
+        } else {
+            print("LOADING DATA FROM ONLINE") // for test use only
+            self.fetchData("https://tednewardsandbox.site44.com/questions.json")
+        }
     }
     
     @IBAction func unwindToVC(segue: UIStoryboardSegue) {
     }
     
     func fetchData(url: String){
-        Alamofire.request(.GET, url).responseJSON() {response in
+        Alamofire.request(.GET, url).responseString() {response in
             switch response.result {
                 //code from SwiftyJSON github page
             case .Success:
                 if let value = response.result.value {
-                    let json = JSON(value) //cast into SwiftyJSON
-                    //print("JSON: \(json)")
-                    let data = json.array
-                    for quizData in data! {
-                        let quiz = Quiz()
-                        quiz.title = quizData["title"].stringValue
-                        quiz.desc = quizData["desc"].stringValue
-                        for questionData in quizData["questions"].array! {
-                            let question = Question(question: questionData["text"].stringValue, answer: questionData["answer"].stringValue, answers: [])
-                            for answerData in questionData["answers"].array! {
-                                question.answers.append(answerData.stringValue)
-                            }
-                            quiz.questions.append(question)
-                            
-                        }
-                        self.quizzes.append(quiz)
-//                        try! self.realm.write {
-//                            self.realm.add(quiz) //writing the data to the local database created by Realm
-//                        }
-                        //print(self.quizzes.count) //- this is for testing purposes
-                    }
+                    
+                    let defaults = NSUserDefaults.standardUserDefaults()
+                    defaults.setValue(String(value), forKey: defaultsKeys.localStorageKey) //storing the content
+                    defaults.synchronize() //you can store multiple lines at once but then it synchornizes, saving the data
+                    self.parseData(value)
+                    print("SAVING DATA TO LOCAL STORAGE") //for test use only
                 }
+                
             case .Failure(let error): //from Alamofire
                 print(error)
             }
             
             self.tableView.reloadData()
+        }
+    }
+    
+    func parseData(data: AnyObject) {
+        if let dataFromString = data.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false) {
+            let json = JSON(data: dataFromString) //cast into SwiftyJSON
+            //print("JSON: \(json)")
+            let data = json.array
+            for quizData in data! {
+                let quiz = Quiz()
+                quiz.title = quizData["title"].stringValue
+                quiz.desc = quizData["desc"].stringValue
+                for questionData in quizData["questions"].array! {
+                    let question = Question(question: questionData["text"].stringValue, answer: questionData["answer"].stringValue, answers: [])
+                    for answerData in questionData["answers"].array! {
+                        question.answers.append(answerData.stringValue)
+                    }
+                    quiz.questions.append(question)
+                    
+                }
+                self.quizzes.append(quiz)
+            }
+ 
         }
     }
     

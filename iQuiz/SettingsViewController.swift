@@ -12,10 +12,9 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var urlInputField: UITextField!
     @IBAction func retrieveDataButton(sender: AnyObject) {
-        self.resignFirstResponder()
+        self.urlInputField.resignFirstResponder()
         let view = MasterViewController()
         view.fetchData(self.urlInputField.text!)
-        
         
     }
 }
